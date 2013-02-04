@@ -69,7 +69,7 @@ $output = $PAGE->get_renderer('core', 'badges');
 $accepted_roles = array_keys($badge->criteria[BADGE_CRITERIA_TYPE_MANUAL]->params);
 
 // If site admin, select a role to award a badge.
-if($isadmin) {
+if ($isadmin) {
     list($usertest, $userparams) = $DB->get_in_or_equal($accepted_roles, SQL_PARAMS_NAMED, 'existing', true);
     $options = $DB->get_records_sql('SELECT * FROM {role} WHERE id ' . $usertest, $userparams);
     foreach ($options as $p) {
