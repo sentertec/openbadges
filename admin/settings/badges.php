@@ -28,7 +28,14 @@
 global $SITE;
 require_once($CFG->libdir . '/badgeslib.php');
 
-if ($hassiteconfig) {
+if ($hassiteconfig || has_any_capability(array(
+            'moodle/badges:viewawarded',
+            'moodle/badges:createbadge',
+            'moodle/badges:manageglobalsettings',
+            'moodle/badges:awardbadge',
+            'moodle/badges:configuremessages',
+            'moodle/badges:configuredetails',
+            'moodle/badges:deletebadge'), $systemcontext)) {
     $ADMIN->add('badges',
             new admin_externalpage('managebadges',
                     new lang_string('managebadges', 'badges'),
